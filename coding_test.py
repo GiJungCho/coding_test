@@ -1,49 +1,24 @@
-from collections import deque
+import sys
+sys.setrecursionlimit(10000)
+input = sys.stdin.readline
+n, m = map(int, input().split())
+A = [[]for _ in range(n+1)]
+visited = [False] * (n+1)
+def DFS(v):
+    visited[v] = True
+    for i in A[v]:
+        if not visited[i]:
+            DFS(i)
 
-# N = 노드 수 , M = 에지 수(연결 선 수) , Start = 시작점
-N, M, Start = map(int, input().split())
-A = [[] for _ in range(N + 1)]
-
-for _ in range(M):
-    s, e = map(int, input().split())
+for _ in range(m):
+    s, e= map(int,input().split())
     A[s].append(e)
     A[e].append(s)
 
-for i in range(N + 1):
-    A[i].sort()  # 번호가 작은 노드부터 방문하기 위해 정렬하기
+count = 0
+for i in range(1, n+1):
+    if not visited[i]:
+        count += 1
+        DFS(i)
 
-
-def DFS(V):
-    ### 중요 부분 ###
-    print(V, end='')
-    visited[V] = True
-    for i in A[V]:
-        if not visited[i]:
-            DFS(i)
-    ### 중요 부분 ###
-
-
-visited = False * (N + 1)  # 리스트 초기화
-DFS(Start)  # 실행
-
-
-# BFS 구현
-def BFS(V):
-    # 큐 자료구조에 시작 노드 삽입
-    queue = deque()
-    queue.append(V)
-    visited[V] = True
-
-    while queue:  # 큐가 비어있을 떄 까지
-        ### 중요 부분
-        now_Node = queue.popleft()
-        print(queue, end='')
-        for i in A[now_Node]:
-            if not visited[i]:
-                visited[i] = True
-                queue.append(i)
-        ### 중요 부분
-
-
-visited = [False] * (N + 1)  # 리스트 초기화
-BFS(Start)  # 실행
+print(count)
