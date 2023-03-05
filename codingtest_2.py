@@ -1,24 +1,14 @@
-import sys
-sys.setrecursionlimit(10000)
-input = sys.stdin.readline # 노트북에서는 해당 셀 지우기()readline안먹힘
-n, m = map(int, input().split())
-A = [[]for _ in range(n+1)]
-visited = [False] * (n+1)
-def DFS(v):
-    visited[v] = True
-    for i in A[v]:
-        if not visited[i]:
-            DFS(i)
+line_data, input_data , N = ([1, 2, 3, 4, 5], [0, 1, 1, 3, 2], 5)
 
-for _ in range(m):
-    s, e= map(int,input().split())
-    A[s].append(e)
-    A[e].append(s)
+out_put = ""
+out_put_list = []
 
-count = 0
-for i in range(1,n+1):
-    if not visited[i]:
-        count += 1
-        DFS(i)
-
-print(count)
+for i in range(N):
+    if i == 0:
+        out_put = out_put + str(i+1)
+        out_put_list.insert(0,i+1)
+    else:
+        out_put = out_put[input_data[i-1] + len(out_put)] +str(i + 1)
+        out_put_list.insert(input_data[i-1] + len(out_put),i+1)
+print(out_put)
+print(out_put_list)

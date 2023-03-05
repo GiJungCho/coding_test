@@ -1,5 +1,6 @@
 import sys
 sys.stdin = open("input.txt", "r")
+# input = sys.stdin.readline
 
 # 1.문자열 입력 받고 출력해서 값이 잘 들어갔지 확인해보기
 # st = 'hello'
@@ -8,7 +9,6 @@ sys.stdin = open("input.txt", "r")
 # hello
 
 # 1.아래에 정답을 입력하시오
-
 
 # 2.정수형 변수 입력 받고 출력해서 값이 잘 들어갔지 확인해보기
 # N = 45
