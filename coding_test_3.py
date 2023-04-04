@@ -1,7 +1,7 @@
-# scoville, K = ([1,2,3,4,5,6,7,8,8,9], 9)
+scoville, K = ([1,2,3,4,5,6,7,8,8,9], 9)
 # scoville,K = ([1, 2, 6, 9, 10, 12], 7) # 2
-# scoville,K = ([1, 2, 6, 7, 9, 10, 12,6], 7)
-scoville,K = ([1, 2, 6, 7, 9, 10, 12,6,6,6], 7)
+
+# scoville,K = ([1, 2, 6, 7, 9, 10, 12,6,6,6], 7)
 def return_Scorvill_mix(a, b):
     return a + (b * 2)
 
